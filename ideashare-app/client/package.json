@@ -4,7 +4,8 @@
 	"description": "creating apps with webpack",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack"
+		"build": "webpack",
+		"dev": "webpack serve"
 	},
 	"author": "Brittany Fitzmaurice",
 	"license": "MIT",
@@ -19,5 +20,8 @@
 		"webpack": "^5.91.0",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^6.5.2"
 	}
 }
