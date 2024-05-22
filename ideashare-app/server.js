@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 /* cors middleware */
 app.use(
 	cors({
+		allowedHeaders: ["authorization", "Content-Type"],
 		origin: ['http://localhost:5000', 'http://localhost:3000'],
 		credentials: true,
 	})
