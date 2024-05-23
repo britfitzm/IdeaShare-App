@@ -17,13 +17,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* cors middleware */
-app.use(
-	cors({
-		allowedHeaders: ["authorization", "Content-Type"],
-		origin: ['http://localhost:5000', 'http://localhost:3000'],
-		credentials: true,
-	})
-);
+if (process.env.NODE_ENV !== "production") {
+const cors = require("cors");
+	app.use(
+		cors({
+			allowedHeaders: ["authorization", "Content-Type"],
+			origin: ['http://localhost:5000', 'http://localhost:3000'],
+			credentials: true,
+		})
+	);
+}
 
 app.get('/', (req, res) => {
 	res.json({ message: 'Welcome to IdeaShare-App' });
