@@ -4,7 +4,7 @@
 	"description": "creating apps with webpack",
 	"main": "index.js",
 	"scripts": {
-		"build": "npm run build --prefix client",
+		"build": "webpack",
 		"dev": "webpack serve"
 	},
 	"author": "Brittany Fitzmaurice",
