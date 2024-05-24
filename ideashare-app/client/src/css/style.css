@@ -81,6 +81,17 @@ form label {
 	margin: 5px 0;
 }
 
+.error-message{
+	color: #efcc1f;
+}
+
+#tag {
+	font-size: 1rem;
+	width: 100%;
+	padding: 2px 10px;
+	border-radius: 4px;
+}
+
 .btn {
 	background-color: #333;
 	color: #fff;

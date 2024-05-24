@@ -1,14 +1,14 @@
 class Modal {
 	constructor() {
-		this._modal = document.querySelector('#modal');
-		this._modalBtn = document.querySelector('#modal-btn');
-		this.addEventListeners();
+		this._modal = document.getElementById('modal');
+		this._modalBtn = document.getElementById('modal-btn');
+		this.eventListeners();
 	}
 
-	addEventListeners() {
+	eventListeners() {
 		this._modalBtn.addEventListener('click', this.open.bind(this));
 		window.addEventListener('click', this.outsideClick.bind(this));
-		document.addEventListener('closemodal', () => this.close());
+		document.addEventListener('closeForm', () => this.close)
 	}
 
 	open() {
@@ -20,10 +20,12 @@ class Modal {
 	}
 
 	outsideClick(e) {
-		if (e.target === this._modal) {
+		if (e.target === this._modal){
 			this.close();
-		}
+		};
+
 	}
 }
+
 
 export default Modal;

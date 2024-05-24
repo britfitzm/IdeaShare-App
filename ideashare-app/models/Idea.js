@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const IdeaSchema = new mongoose.Schema({
 	text: {
 		type: String,
-		required: [true, 'Please add a text field'],
+		require: [true, 'Please write something']
 	},
 	tag: {
-		type: String,
+		type: String
 	},
 	username: {
-		type: String,
+		type: String
 	},
 	date: {
 		type: Date,
-		default: Date.now,
-	},
-});
+		default: Date.now
+	}
+})
 
 module.exports = mongoose.model('Idea', IdeaSchema);

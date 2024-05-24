@@ -1,17 +1,18 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+ 
 module.exports = {
-	mode: 'production',
-	entry: './src/index.js',
+	mode: "production",
+	entry: "./src/index.js",
 	output: {
-		path: path.resolve(__dirname, '../public'),
-		filename: 'bundle.js',
+		path: path.resolve(__dirname, "../public"),
+		filename: "bundle.js",
 	},
 	devServer: {
 		static: {
-			directory: path.resolve(__dirname, '../public'),
+			directory: path.resolve(__dirname, "../public"),
 		},
 		port: 3000,
 		open: true,
@@ -19,32 +20,45 @@ module.exports = {
 		compress: true,
 		historyApiFallback: true,
 		proxy: {
-			'/api': 'http://localhost:5000',
+			"/api": "http://localhost:8000",
 		},
 	},
 	module: {
 		rules: [
 			{
 				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader'],
+				use: [MiniCssExtractPlugin.loader, "css-loader"],
 			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: "babel-loader",
 					options: {
-						presets: ['@babel/preset-env'],
+						presets: ["@babel/preset-env"],
 					},
 				},
 			},
 		],
 	},
+	performance: {
+		maxAssetSize: 500000, /* 500kb */
+		maxEntrypointSize: 500000, /* 500kb */
+		hints: "warning", /* 'error' or false are other valid values */
+	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Webpack App',
-			filename: 'index.html',
-			template: './src/index.html',
+			title: "Webpack App",
+			filename: "index.html",
+			template: "./src/index.html",
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				useShortDoctype: true,
+			},
 		}),
 		new MiniCssExtractPlugin(),
 	],
